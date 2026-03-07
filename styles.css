@@ -303,6 +303,10 @@ main {
   align-items: center;
 }
 
+.hero-title {
+  font-size: clamp(1.9rem, 4.1vw, 3.1rem);
+}
+
 @media (max-width: 920px) {
   .hero { padding: 44px; }
   .hero-grid { grid-template-columns: 1fr; gap: 26px; }
