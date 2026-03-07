@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>404 — Page not found</title>
-  <meta name="robots" content="noindex" />
+  <title>Projects — Caleb Miller</title>
+  <meta name="description" content="Projects by Caleb Miller — data engineering, analytics, and applied ML work." />
   <link rel="stylesheet" href="./styles.css?v=1" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -29,7 +29,7 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="./index.html">Home</a>
         <a href="./about.html">About</a>
-        <a href="./projects.html">Projects</a>
+        <a class="active" href="./projects.html">Projects</a>
         <a href="./resume.html">Resume</a>
         <a href="./contact.html">Contact</a>
       </nav>
@@ -37,14 +37,23 @@
   </header>
 
   <main id="main">
-    <section class="hero">
-      <span class="kicker"><span class="dot" aria-hidden="true"></span>404</span>
-      <h1 class="h1">Page not found.</h1>
-      <p class="lede">That link doesn’t exist (or it moved). Head back home or jump to a main section.</p>
-      <div class="actions mt16">
-        <a class="btn primary" href="./index.html">Back home</a>
-        <a class="btn ghost" href="./about.html">About</a>
-        <a class="btn ghost" href="./resume.html">Resume</a>
+    <section class="section">
+      <span class="kicker"><span class="dot" aria-hidden="true"></span>Projects</span>
+      <h1 class="h1">Selected work</h1>
+
+      <div class="grid mt16">
+
+        <!-- Project Card -->
+        <article class="card" style="grid-column: span 12;">
+          <h3>Fantasy Football Draft Recommender System</h3>
+          <p class="m0">A draft assistant combining projected performance with dynamic roster rules and positional scarcity strategies.</p>
+          <p class="mt12">
+            <a class="btn ghost" href="https://github.com/caleb10miller/FantasyFootballHelper" target="_blank" rel="noopener noreferrer">
+              View on GitHub
+            </a>
+          </p>
+        </article>
+
       </div>
     </section>
   </main>
