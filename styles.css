@@ -1,5 +1,5 @@
 /* =========================================================
-   Caleb Miller — Dark background + light cards + two-column SQL
+   Caleb Miller — Dark background + light cards + distributed SQL
    ========================================================= */
 
 /* Reset */
@@ -78,7 +78,7 @@ body {
   left: 12px;
 }
 
-/* SQL two-column layout */
+/* SQL background */
 .bg-sql-layer {
   position: fixed;
   inset: 0;
@@ -87,36 +87,17 @@ body {
   overflow: hidden;
 }
 
-.sql-column {
-  position: absolute;
-  top: 112px;
-  bottom: 0;
-  width: 38vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  gap: 2.4rem;
-}
-
-.sql-column-left {
-  left: 0.8rem;
-}
-
-.sql-column-right {
-  right: 0.8rem;
-}
-
 .sql-block {
+  position: absolute;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  color: rgba(74, 222, 128, 0.14);
-  text-shadow: 0 0 10px rgba(34,197,94,.06);
-  filter: blur(0.12px);
+  color: rgba(74, 222, 128, 0.13);
+  text-shadow: 0 0 8px rgba(34,197,94,.05);
+  filter: blur(0.1px);
   line-height: 1.55;
   letter-spacing: 0.01em;
   white-space: pre-wrap;
   user-select: none;
-  max-width: 100%;
-  animation: driftBlock 24s ease-in-out infinite;
+  animation: sqlFloat 24s ease-in-out infinite;
 }
 
 .sql-block pre {
@@ -124,17 +105,24 @@ body {
   white-space: pre-wrap;
 }
 
-.sql-block-1 { font-size: 17px; opacity: 0.48; transform: translateX(-8px); }
-.sql-block-2 { font-size: 16px; opacity: 0.42; transform: translateX(18px); }
-.sql-block-3 { font-size: 15px; opacity: 0.36; transform: translateX(6px); }
+/* Top row */
+.sql-a { top: 12%; left: 1.5%; width: 18vw; font-size: 15px; opacity: .42; }
+.sql-b { top: 12%; left: 39%; width: 20vw; font-size: 15px; opacity: .34; }
+.sql-c { top: 12%; right: 1.5%; width: 18vw; font-size: 15px; opacity: .38; }
 
-.sql-block-4 { font-size: 17px; opacity: 0.44; transform: translateX(10px); }
-.sql-block-5 { font-size: 16px; opacity: 0.34; transform: translateX(-14px); }
-.sql-block-6 { font-size: 15px; opacity: 0.38; transform: translateX(4px); }
+/* Middle row */
+.sql-d { top: 41%; left: 2%; width: 20vw; font-size: 15px; opacity: .36; }
+.sql-e { top: 46%; left: 41%; width: 18vw; font-size: 15px; opacity: .28; }
+.sql-f { top: 41%; right: 2%; width: 20vw; font-size: 15px; opacity: .34; }
 
-@keyframes driftBlock {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 8px 0; }
+/* Bottom row */
+.sql-g { top: 75%; left: 2%; width: 18vw; font-size: 15px; opacity: .30; }
+.sql-h { top: 72%; left: 39%; width: 20vw; font-size: 15px; opacity: .24; }
+.sql-i { top: 75%; right: 2%; width: 18vw; font-size: 15px; opacity: .30; }
+
+@keyframes sqlFloat {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
 }
 
 /* ambient glow blobs */
@@ -652,12 +640,8 @@ main > section + section {
 }
 
 @media (max-width: 1100px) {
-  .sql-column {
-    width: 34vw;
-  }
-
   .sql-block {
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
 }
 
@@ -675,13 +659,18 @@ main > section + section {
     grid-column: span 12;
   }
 
-  .sql-column {
-    width: 30vw;
+  .sql-b,
+  .sql-e,
+  .sql-h {
+    display: none;
   }
 
-  .sql-block-3,
-  .sql-block-6 {
-    display: none;
+  .sql-a, .sql-d, .sql-g {
+    width: 24vw;
+  }
+
+  .sql-c, .sql-f, .sql-i {
+    width: 24vw;
   }
 }
 
@@ -702,8 +691,8 @@ main > section + section {
     margin-top: 28px;
   }
 
-  .sql-column {
-    opacity: 0.72;
+  .sql-block {
+    opacity: 0.7;
   }
 }
 
@@ -716,16 +705,16 @@ main > section + section {
     padding: 28px;
   }
 
-  .sql-column-right {
+  .sql-c,
+  .sql-f,
+  .sql-i {
     display: none;
   }
 
-  .sql-column-left {
-    width: 52vw;
-  }
-
-  .sql-block-2,
-  .sql-block-3 {
-    display: none;
+  .sql-a,
+  .sql-d,
+  .sql-g {
+    width: 40vw;
+    opacity: .24;
   }
 }
