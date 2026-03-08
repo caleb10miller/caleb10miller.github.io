@@ -100,12 +100,14 @@ body {
   position: absolute;
   left: -10vw;
   width: 120vw;
-  color: rgba(22, 101, 52, 0.10);
+  color: rgba(15, 23, 42, 0.16);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 30px;
-  line-height: 1.9;
+  font-size: 28px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
   white-space: pre;
-  filter: blur(0.35px);
+  filter: blur(0.2px);
+  text-shadow: 0 0 10px rgba(15, 23, 42, 0.04);
   user-select: none;
 }
 
@@ -115,33 +117,33 @@ body {
 }
 
 .sql-track-1 {
-  top: 14%;
+  top: 10%;
   animation: driftSql1 36s ease-in-out infinite;
 }
 
 .sql-track-2 {
-  top: 44%;
+  top: 42%;
   animation: driftSql2 42s ease-in-out infinite;
 }
 
 .sql-track-3 {
-  top: 74%;
+  top: 78%;
   animation: driftSql3 40s ease-in-out infinite;
 }
 
 @keyframes driftSql1 {
   0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(90px); }
+  50% { transform: translateX(55px); }
 }
 
 @keyframes driftSql2 {
   0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(-110px); }
+  50% { transform: translateX(-65px); }
 }
 
 @keyframes driftSql3 {
   0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(75px); }
+  50% { transform: translateX(45px); }
 }
 
 /* Decorative blobs */
@@ -318,10 +320,6 @@ main {
   text-transform: uppercase;
 }
 
-.hero .kicker {
-  color: rgba(34,197,94,.80);
-}
-
 .h1 {
   font-size: clamp(2.1rem, 4.6vw, 3.6rem);
   line-height: 1.08;
@@ -342,22 +340,13 @@ main {
   padding: 56px;
   border-radius: calc(var(--radius-xl) + 4px);
   background:
-    radial-gradient(860px 360px at 18% -12%, rgba(34,197,94,.10), transparent 58%),
-    radial-gradient(820px 380px at 92% 10%, rgba(59,130,246,.10), transparent 62%),
-    linear-gradient(180deg, #020617, #030712);
-  border: 1px solid rgba(34,197,94,.18);
-  box-shadow: 0 22px 70px rgba(2, 6, 23, .32);
+    radial-gradient(820px 340px at 12% 0%, rgba(37,99,235,.09), transparent 58%),
+    radial-gradient(760px 340px at 92% 18%, rgba(15,23,42,.06), transparent 58%),
+    var(--glass-bg);
+  border: 1px solid var(--glass-stroke);
+  box-shadow: var(--glass-shadow);
   overflow: hidden;
   position: relative;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  box-shadow: inset 0 0 0 1px rgba(34,197,94,.06);
 }
 
 .hero-grid {
@@ -374,14 +363,6 @@ main {
 
 .hero-title {
   font-size: clamp(1.9rem, 4.1vw, 3.1rem);
-}
-
-.hero .hero-title {
-  color: #f8fafc;
-}
-
-.hero .lede {
-  color: rgba(248,250,252,.76);
 }
 
 .hero .actions {
@@ -434,28 +415,6 @@ main {
 
 .btn.ghost:hover {
   transform: translateY(-1px);
-}
-
-.hero .btn.primary {
-  background: rgba(34,197,94,.92);
-  color: #052e16;
-  border-color: transparent;
-  box-shadow: 0 18px 44px rgba(34,197,94,.20);
-}
-
-.hero .btn.primary:hover {
-  background: rgba(34,197,94,1);
-  box-shadow: 0 24px 60px rgba(34,197,94,.24);
-}
-
-.hero .btn.ghost {
-  background: rgba(255,255,255,.04);
-  color: rgba(248,250,252,.88);
-  border-color: rgba(34,197,94,.22);
-}
-
-.hero .btn.ghost:hover {
-  background: rgba(255,255,255,.08);
 }
 
 /* Cards */
