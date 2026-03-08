@@ -1,6 +1,5 @@
 /* =========================================================
-   Caleb Miller — Dark background + light cards + evenly
-   distributed SQL + softer header transition
+   Caleb Miller — Dark background + light cards + two-column SQL
    ========================================================= */
 
 /* Reset */
@@ -79,7 +78,7 @@ body {
   left: 12px;
 }
 
-/* SQL composition layer — evenly distributed */
+/* SQL two-column layout */
 .bg-sql-layer {
   position: fixed;
   inset: 0;
@@ -88,95 +87,54 @@ body {
   overflow: hidden;
 }
 
-.sql-band {
+.sql-column {
   position: absolute;
-  left: -6vw;
-  width: 112vw;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  color: rgba(74, 222, 128, 0.14);
-  text-shadow: 0 0 10px rgba(34,197,94,.07);
-  letter-spacing: 0.01em;
-  filter: blur(0.15px);
-  user-select: none;
-  line-height: 1.7;
-  white-space: pre-wrap;
+  top: 112px;
+  bottom: 0;
+  width: 38vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 2.4rem;
 }
 
-.sql-band pre {
+.sql-column-left {
+  left: 0.8rem;
+}
+
+.sql-column-right {
+  right: 0.8rem;
+}
+
+.sql-block {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: rgba(74, 222, 128, 0.14);
+  text-shadow: 0 0 10px rgba(34,197,94,.06);
+  filter: blur(0.12px);
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  white-space: pre-wrap;
+  user-select: none;
+  max-width: 100%;
+  animation: driftBlock 24s ease-in-out infinite;
+}
+
+.sql-block pre {
   margin: 0;
   white-space: pre-wrap;
 }
 
-.sql-band-1 {
-  top: 12%;
-  font-size: 18px;
-  opacity: 0.60;
-  animation: driftBand1 56s ease-in-out infinite;
-}
+.sql-block-1 { font-size: 17px; opacity: 0.48; transform: translateX(-8px); }
+.sql-block-2 { font-size: 16px; opacity: 0.42; transform: translateX(18px); }
+.sql-block-3 { font-size: 15px; opacity: 0.36; transform: translateX(6px); }
 
-.sql-band-2 {
-  top: 24%;
-  font-size: 17px;
-  opacity: 0.54;
-  animation: driftBand2 62s ease-in-out infinite;
-}
+.sql-block-4 { font-size: 17px; opacity: 0.44; transform: translateX(10px); }
+.sql-block-5 { font-size: 16px; opacity: 0.34; transform: translateX(-14px); }
+.sql-block-6 { font-size: 15px; opacity: 0.38; transform: translateX(4px); }
 
-.sql-band-3 {
-  top: 39%;
-  font-size: 18px;
-  opacity: 0.50;
-  animation: driftBand3 60s ease-in-out infinite;
-}
-
-.sql-band-4 {
-  top: 55%;
-  font-size: 19px;
-  opacity: 0.66;
-  animation: driftBand4 66s ease-in-out infinite;
-}
-
-.sql-band-5 {
-  top: 73%;
-  font-size: 17px;
-  opacity: 0.46;
-  animation: driftBand5 64s ease-in-out infinite;
-}
-
-.sql-band-6 {
-  top: 88%;
-  font-size: 17px;
-  opacity: 0.40;
-  animation: driftBand6 70s ease-in-out infinite;
-}
-
-@keyframes driftBand1 {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(16px); }
-}
-
-@keyframes driftBand2 {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(-14px); }
-}
-
-@keyframes driftBand3 {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(10px); }
-}
-
-@keyframes driftBand4 {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(-12px); }
-}
-
-@keyframes driftBand5 {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(12px); }
-}
-
-@keyframes driftBand6 {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(-10px); }
+@keyframes driftBlock {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 8px 0; }
 }
 
 /* ambient glow blobs */
@@ -229,29 +187,22 @@ body {
   min-height: var(--nav-height);
   display: flex;
   align-items: center;
-
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-
-  /* clean glass gray-blue */
   background: rgba(226, 232, 240, 0.68);
-
-  border-bottom: none;     /* remove hard edge */
-  box-shadow: none;        /* remove glow entirely */
-
+  border-bottom: none;
+  box-shadow: none;
   padding: 1.25rem 0;
 }
 
-/* subtle fade instead of glow */
 .site-header::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -10px;
-  height: 10px;
+  bottom: -12px;
+  height: 12px;
   pointer-events: none;
-
   background: linear-gradient(
     to bottom,
     rgba(226, 232, 240, 0.68) 0%,
@@ -700,6 +651,16 @@ main > section + section {
   font-size: 0.98rem;
 }
 
+@media (max-width: 1100px) {
+  .sql-column {
+    width: 34vw;
+  }
+
+  .sql-block {
+    font-size: 14px !important;
+  }
+}
+
 @media (max-width: 920px) {
   .hero {
     padding: 44px;
@@ -714,16 +675,13 @@ main > section + section {
     grid-column: span 12;
   }
 
-  .sql-band-1,
-  .sql-band-2,
-  .sql-band-3,
-  .sql-band-5,
-  .sql-band-6 {
-    font-size: 15px;
+  .sql-column {
+    width: 30vw;
   }
 
-  .sql-band-4 {
-    font-size: 16px;
+  .sql-block-3,
+  .sql-block-6 {
+    display: none;
   }
 }
 
@@ -744,8 +702,8 @@ main > section + section {
     margin-top: 28px;
   }
 
-  .sql-band {
-    opacity: 0.42;
+  .sql-column {
+    opacity: 0.72;
   }
 }
 
@@ -758,16 +716,16 @@ main > section + section {
     padding: 28px;
   }
 
-  .sql-band-1,
-  .sql-band-3,
-  .sql-band-5 {
+  .sql-column-right {
     display: none;
   }
 
-  .sql-band-2,
-  .sql-band-4,
-  .sql-band-6 {
-    font-size: 13px;
-    opacity: 0.30;
+  .sql-column-left {
+    width: 52vw;
+  }
+
+  .sql-block-2,
+  .sql-block-3 {
+    display: none;
   }
 }
