@@ -269,7 +269,7 @@ main {
 .lede {
   font-size: 1.12rem;
   color: var(--muted);
-  max-width: 70ch;
+  max-width: none;
   margin: 0;
 }
 
