@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Caleb Miller — Data Engineer</title>
   <meta name="description" content="Caleb Miller — Data Engineer in Philadelphia building Snowflake + dbt data platforms in healthcare." />
-  <link rel="stylesheet" href="./styles.css?v=1" />
+  <link rel="stylesheet" href="./styles.css?v=2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
@@ -14,60 +14,61 @@
   <div class="bg-sql-layer" aria-hidden="true">
     <div class="sql-track sql-track-1">
       <pre>
-  select member_id, claim_date, paid_amount
-  from fct_claims
-  where service_year = 2025;
+select member_id, claim_date, paid_amount
+from fct_claims
+where service_year = 2025;
 
-  with engagement as (
-    select patient_id, min(event_date) as first_engagement_date
-    from int_patient_events
-    group by 1
-  )
+with engagement as (
+  select patient_id, min(event_date) as first_engagement_date
+  from int_patient_events
+  group by 1
+)
 
-  select provider_id, count(*) as visits
-  from fct_visits
-  group by 1;
+select provider_id, count(*) as visits
+from fct_visits
+group by 1;
       </pre>
     </div>
 
     <div class="sql-track sql-track-2">
       <pre>
-  select patient_id, assessment_date, score
-  from fct_assessments
-  where assessment_type = 'PHQ-9';
+select patient_id, assessment_date, score
+from fct_assessments
+where assessment_type = 'PHQ-9';
 
-  with outreach as (
-    select member_id, min(sent_at) as first_outreach
-    from int_member_outreach
-    group by 1
-  )
+with outreach as (
+  select member_id, min(sent_at) as first_outreach
+  from int_member_outreach
+  group by 1
+)
 
-  select customer_id, count(*) as registrations
-  from fct_registrations
-  group by 1;
+select customer_id, count(*) as registrations
+from fct_registrations
+group by 1;
       </pre>
     </div>
 
     <div class="sql-track sql-track-3">
       <pre>
-  select dx_code, count(*) as claims
-  from fct_claim_diagnosis
+select dx_code, count(*) as claims
+from fct_claim_diagnosis
+group by 1
+order by claims desc;
+
+select provider_id, avg(paid_amount) as avg_paid
+from fct_claims
+group by 1;
+
+with flags as (
+  select patient_id, max(is_urgent) as urgent_flag
+  from int_patient_events
   group by 1
-  order by claims desc;
-
-  select provider_id, avg(paid_amount) as avg_paid
-  from fct_claims
-  group by 1;
-
-  with flags as (
-    select patient_id, max(is_urgent) as urgent_flag
-    from int_patient_events
-    group by 1
-  )
-  select * from flags;
+)
+select * from flags;
       </pre>
     </div>
   </div>
+
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="bg-blob blob-1" aria-hidden="true"></div>
   <div class="bg-blob blob-2" aria-hidden="true"></div>
@@ -97,7 +98,7 @@
     <section class="hero">
       <div class="hero-grid hero-grid--single">
         <div>
-          <span class="kicker"><span aria-hidden="true"></span>Data Engineering + Applied ML</span>
+          <span class="kicker">Data Engineering + Applied ML</span>
           <h1 class="h1 hero-title">I build reliable data pipelines that turn complex data into insights.</h1>
           <p class="lede">I’m a Data Engineer at NeuroFlow, building scalable data systems for healthcare reporting, decision support, and production ML.</p>
 
@@ -111,7 +112,7 @@
     </section>
 
     <section class="section">
-      <span class="kicker"><span aria-hidden="true"></span>Quick facts</span>
+      <span class="kicker">Quick facts</span>
       <div class="grid facts">
         <div class="card fact" style="grid-column: span 12;">
           <h3>Current focus</h3>
@@ -129,7 +130,7 @@
     </section>
 
     <section class="section">
-      <span class="kicker"><span aria-hidden="true"></span>Highlights</span>
+      <span class="kicker">Highlights</span>
       <ul class="list">
         <li><span class="bullet" aria-hidden="true"></span><span>Lead Data Engineer for a claims-based analytics platform powering a multi-year pay-for-performance contract.</span></li>
         <li><span class="bullet" aria-hidden="true"></span><span>Re-architected legacy entity resolution into a Snowflake-native SQL solution to improve recall and reduce complexity.</span></li>
@@ -138,7 +139,7 @@
     </section>
 
     <section class="section">
-      <span class="kicker"><span aria-hidden="true"></span>Links</span>
+      <span class="kicker">Links</span>
       <div class="grid mt12">
         <div class="card">
           <h3>GitHub</h3>
@@ -162,5 +163,62 @@
       </nav>
     </div>
   </footer>
+
+  <script>
+    const sqlSets = [
+`select member_id, claim_date, paid_amount
+from fct_claims
+where service_year = 2025;
+
+with engagement as (
+  select patient_id, min(event_date) as first_engagement_date
+  from int_patient_events
+  group by 1
+)
+
+select provider_id, count(*) as visits
+from fct_visits
+group by 1;`,
+
+`select patient_id, assessment_date, score
+from fct_assessments
+where assessment_type = 'PHQ-9';
+
+with outreach as (
+  select member_id, min(sent_at) as first_outreach
+  from int_member_outreach
+  group by 1
+)
+
+select customer_id, count(*) as registrations
+from fct_registrations
+group by 1;`,
+
+`select dx_code, count(*) as claims
+from fct_claim_diagnosis
+group by 1
+order by claims desc;
+
+select provider_id, avg(paid_amount) as avg_paid
+from fct_claims
+group by 1;
+
+with flags as (
+  select patient_id, max(is_urgent) as urgent_flag
+  from int_patient_events
+  group by 1
+)
+select * from flags;`
+    ];
+
+    const tracks = document.querySelectorAll(".sql-track pre");
+
+    setInterval(() => {
+      tracks.forEach(track => {
+        const randomSql = sqlSets[Math.floor(Math.random() * sqlSets.length)];
+        track.textContent = randomSql;
+      });
+    }, 8000);
+  </script>
 </body>
 </html>
