@@ -1,5 +1,6 @@
 /* =========================================================
    Caleb Miller — Dark background + light cards + composed SQL
+   softened contrast refinement
    ========================================================= */
 
 /* Reset */
@@ -23,14 +24,15 @@ a { color: inherit; }
   --shadow-soft: 0 24px 70px rgba(2, 6, 23, .26);
   --shadow-card: 0 18px 42px rgba(2, 6, 23, .12);
 
-  --glass-bg: rgba(255, 255, 255, 0.82);
-  --glass-stroke: rgba(255, 255, 255, 0.18);
+  /* Slightly darker gray-blue + more transparency */
+  --glass-bg: rgba(226, 232, 240, 0.76);
+  --glass-stroke: rgba(255, 255, 255, 0.16);
   --glass-shadow: var(--shadow-soft);
 
-  --surface-bg: rgba(255, 255, 255, 0.88);
+  --surface-bg: rgba(226, 232, 240, 0.76);
   --surface-stroke: rgba(255, 255, 255, 0.14);
-  --card-bg: rgba(250, 247, 242, 0.86);
-  --card-stroke: rgba(228, 221, 210, 0.62);
+  --card-bg: rgba(232, 237, 245, 0.70);
+  --card-stroke: rgba(208, 218, 231, 0.42);
 
   --text: #0b1220;
   --muted: rgba(11, 18, 32, 0.72);
@@ -48,9 +50,9 @@ html {
   line-height: 1.65;
   color: var(--text);
   background:
-    radial-gradient(1200px 700px at 14% -10%, rgba(37,99,235,.24), transparent 54%),
-    radial-gradient(1000px 700px at 88% 4%, rgba(34,197,94,.12), transparent 56%),
-    radial-gradient(900px 720px at 50% 118%, rgba(29,78,216,.14), transparent 60%),
+    radial-gradient(1200px 700px at 14% -10%, rgba(37,99,235,.18), transparent 54%),
+    radial-gradient(1000px 700px at 88% 4%, rgba(34,197,94,.09), transparent 56%),
+    radial-gradient(900px 720px at 50% 118%, rgba(29,78,216,.10), transparent 60%),
     linear-gradient(180deg, #031021 0%, #04162c 42%, #031224 100%);
   background-attachment: fixed;
 }
@@ -233,7 +235,7 @@ body {
   width: 560px;
   height: 560px;
   filter: blur(80px);
-  opacity: .34;
+  opacity: .28;
   pointer-events: none;
   z-index: -2;
   transform: translate3d(0,0,0);
@@ -243,7 +245,7 @@ body {
 .bg-blob.blob-1 {
   left: -220px;
   top: 110px;
-  background: radial-gradient(circle at 30% 30%, rgba(37,99,235,.34), transparent 62%);
+  background: radial-gradient(circle at 30% 30%, rgba(37,99,235,.24), transparent 62%);
 }
 
 .bg-blob.blob-2 {
@@ -251,7 +253,7 @@ body {
   top: 20px;
   width: 560px;
   height: 560px;
-  background: radial-gradient(circle at 30% 30%, rgba(34,197,94,.14), transparent 62%);
+  background: radial-gradient(circle at 30% 30%, rgba(34,197,94,.10), transparent 62%);
   animation-duration: 21s;
 }
 
@@ -260,7 +262,7 @@ body {
   bottom: -340px;
   width: 760px;
   height: 760px;
-  background: radial-gradient(circle at 30% 30%, rgba(59,130,246,.16), transparent 62%);
+  background: radial-gradient(circle at 30% 30%, rgba(59,130,246,.11), transparent 62%);
   animation-duration: 23s;
 }
 
@@ -277,10 +279,10 @@ body {
   min-height: var(--nav-height);
   display: flex;
   align-items: center;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background: rgba(255, 255, 255, 0.90);
-  border-bottom: 1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(226, 232, 240, 0.70);
+  border-bottom: 1px solid rgba(255,255,255,.14);
   box-shadow: 0 6px 20px rgba(2, 6, 23, 0.10);
   padding: 1.25rem 0;
 }
@@ -328,8 +330,8 @@ body {
   gap: 6px;
   padding: 8px;
   border-radius: 999px;
-  background: rgba(255,255,255,.70);
-  border: 1px solid rgba(15,23,42,.08);
+  background: rgba(226, 232, 240, 0.54);
+  border: 1px solid rgba(255,255,255,.18);
 }
 
 .nav-links a {
@@ -364,6 +366,8 @@ main {
   padding: clamp(44px, 5vw, 64px);
   border-radius: var(--radius-xl);
   background: var(--surface-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,.14);
   box-shadow: 0 20px 55px rgba(2, 6, 23, .16);
 }
@@ -384,8 +388,8 @@ main {
   border-radius: inherit;
   pointer-events: none;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.72),
-    inset 0 0 0 1px rgba(255,255,255,.08);
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 0 0 0 1px rgba(255,255,255,.06);
 }
 
 .section > * {
@@ -423,9 +427,11 @@ main {
   padding: 56px;
   border-radius: calc(var(--radius-xl) + 4px);
   background:
-    radial-gradient(820px 340px at 12% 0%, rgba(59,130,246,.08), transparent 58%),
-    radial-gradient(760px 340px at 92% 18%, rgba(255,255,255,.06), transparent 58%),
-    rgba(255,255,255,.80);
+    radial-gradient(820px 340px at 12% 0%, rgba(59,130,246,.06), transparent 58%),
+    radial-gradient(760px 340px at 92% 18%, rgba(255,255,255,.04), transparent 58%),
+    rgba(226, 232, 240, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,.16);
   box-shadow: 0 22px 65px rgba(2, 6, 23, .18);
   overflow: hidden;
@@ -491,7 +497,7 @@ main {
 }
 
 .btn.ghost {
-  background: rgba(250,247,242,.82);
+  background: rgba(241, 245, 249, 0.72);
   color: var(--text);
   border-color: rgba(15,23,42,.10);
 }
@@ -511,11 +517,11 @@ main {
   grid-column: span 6;
   padding: 26px;
   border-radius: var(--radius-lg);
-  background: rgba(250, 247, 242, 0.78);
-  border: 1px solid rgba(228, 221, 210, 0.52);
+  background: var(--card-bg);
+  border: 1px solid var(--card-stroke);
   box-shadow: 0 14px 30px rgba(2, 6, 23, .08);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .card h3 {
@@ -567,8 +573,10 @@ main {
   position: relative;
   padding: 18px 22px;
   border-radius: var(--radius-lg);
-  background: rgba(250, 247, 242, 0.80);
-  border: 1px solid rgba(228, 221, 210, 0.52);
+  background: rgba(232, 237, 245, 0.72);
+  border: 1px solid rgba(208, 218, 231, 0.42);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .timeline .top {
@@ -594,9 +602,11 @@ main {
   width: 100%;
   height: min(78vh, 880px);
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(228, 221, 210, 0.52);
+  border: 1px solid rgba(208, 218, 231, 0.42);
   overflow: hidden;
-  background: rgba(250, 247, 242, 0.80);
+  background: rgba(232, 237, 245, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 /* Contact form */
@@ -621,7 +631,7 @@ input, textarea {
   padding: 13px 14px;
   border-radius: 14px;
   border: 1px solid rgba(15,23,42,.14);
-  background: rgba(250,247,242,.92);
+  background: rgba(241,245,249,.82);
   color: var(--text);
   outline: none;
 }
