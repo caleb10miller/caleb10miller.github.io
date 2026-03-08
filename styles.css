@@ -1,6 +1,6 @@
 /* =========================================================
-   Caleb Miller — Dark background + light cards + composed SQL
-   softened contrast refinement + hierarchy polish
+   Caleb Miller — Dark background + light cards + evenly
+   distributed SQL + softer header transition
    ========================================================= */
 
 /* Reset */
@@ -24,7 +24,6 @@ a { color: inherit; }
   --shadow-soft: 0 24px 70px rgba(2, 6, 23, .26);
   --shadow-card: 0 18px 42px rgba(2, 6, 23, .12);
 
-  /* Slightly darker gray-blue + more transparency */
   --glass-bg: rgba(226, 232, 240, 0.76);
   --glass-stroke: rgba(255, 255, 255, 0.16);
   --glass-shadow: var(--shadow-soft);
@@ -32,7 +31,6 @@ a { color: inherit; }
   --surface-bg: rgba(226, 232, 240, 0.76);
   --surface-stroke: rgba(255, 255, 255, 0.14);
 
-  /* Slightly lighter inner cards for better pop */
   --card-bg: rgba(241, 245, 249, 0.78);
   --card-stroke: rgba(208, 218, 231, 0.46);
 
@@ -81,7 +79,7 @@ body {
   left: 12px;
 }
 
-/* SQL composition layer */
+/* SQL composition layer — evenly distributed */
 .bg-sql-layer {
   position: fixed;
   inset: 0;
@@ -90,161 +88,95 @@ body {
   overflow: hidden;
 }
 
-.sql-piece {
+.sql-band {
   position: absolute;
+  left: -6vw;
+  width: 112vw;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  color: rgba(74, 222, 128, 0.16);
-  text-shadow: 0 0 10px rgba(34,197,94,.08);
+  color: rgba(74, 222, 128, 0.14);
+  text-shadow: 0 0 10px rgba(34,197,94,.07);
   letter-spacing: 0.01em;
-  filter: blur(0.18px);
+  filter: blur(0.15px);
   user-select: none;
+  line-height: 1.7;
   white-space: pre-wrap;
-  line-height: 1.65;
 }
 
-.sql-piece pre {
+.sql-band pre {
   margin: 0;
   white-space: pre-wrap;
 }
 
-/* top-left fragment */
-.sql-piece-1 {
+.sql-band-1 {
   top: 12%;
-  left: -4%;
-  width: 42vw;
-  font-size: 18px;
-  opacity: 0.78;
-  animation: driftPiece1 48s ease-in-out infinite;
-}
-
-/* top-right strip */
-.sql-piece-2 {
-  top: 12.3%;
-  right: -8%;
-  width: 44vw;
-  font-size: 18px;
-  opacity: 0.72;
-  animation: driftPiece2 54s ease-in-out infinite;
-}
-
-/* left multiline by hero */
-.sql-piece-3 {
-  top: 27%;
-  left: -1%;
-  width: 22vw;
-  font-size: 16px;
-  opacity: 0.70;
-  transform: rotate(-4deg);
-  animation: driftPiece3 58s ease-in-out infinite;
-}
-
-/* strongest band between hero and quick facts */
-.sql-piece-4 {
-  top: 55%;
-  left: 4%;
-  width: 92vw;
-  font-size: 20px;
-  opacity: 0.82;
-  animation: driftPiece4 64s ease-in-out infinite;
-}
-
-/* lower-left support */
-.sql-piece-5 {
-  top: 79%;
-  left: -1%;
-  width: 20vw;
-  font-size: 15px;
-  opacity: 0.58;
-  transform: rotate(3deg);
-  animation: driftPiece5 60s ease-in-out infinite;
-}
-
-/* lower-right cropped fragment behind / beside cards */
-.sql-piece-6 {
-  top: 80%;
-  right: -4%;
-  width: 28vw;
   font-size: 18px;
   opacity: 0.60;
-  transform: rotate(-3deg);
-  animation: driftPiece6 56s ease-in-out infinite;
+  animation: driftBand1 56s ease-in-out infinite;
 }
 
-/* additional right-side fill */
-.sql-piece-7 {
-  top: 66%;
-  right: 2%;
-  width: 24vw;
-  font-size: 16px;
-  opacity: 0.34;
-  transform: rotate(2deg);
-  animation: driftPiece7 62s ease-in-out infinite;
-}
-
-/* bottom-right long strip to fill blank space */
-.sql-piece-8 {
-  top: 91%;
-  right: -6%;
-  width: 46vw;
+.sql-band-2 {
+  top: 24%;
   font-size: 17px;
-  opacity: 0.42;
-  animation: driftPiece8 68s ease-in-out infinite;
+  opacity: 0.54;
+  animation: driftBand2 62s ease-in-out infinite;
 }
 
-/* new faint bottom-right support fragment */
-.sql-piece-9 {
+.sql-band-3 {
+  top: 39%;
+  font-size: 18px;
+  opacity: 0.50;
+  animation: driftBand3 60s ease-in-out infinite;
+}
+
+.sql-band-4 {
+  top: 55%;
+  font-size: 19px;
+  opacity: 0.66;
+  animation: driftBand4 66s ease-in-out infinite;
+}
+
+.sql-band-5 {
   top: 73%;
-  right: -2%;
-  width: 30vw;
-  font-size: 15px;
-  opacity: 0.24;
-  transform: rotate(-2deg);
-  animation: driftPiece9 66s ease-in-out infinite;
+  font-size: 17px;
+  opacity: 0.46;
+  animation: driftBand5 64s ease-in-out infinite;
 }
 
-@keyframes driftPiece1 {
+.sql-band-6 {
+  top: 88%;
+  font-size: 17px;
+  opacity: 0.40;
+  animation: driftBand6 70s ease-in-out infinite;
+}
+
+@keyframes driftBand1 {
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(16px); }
 }
 
-@keyframes driftPiece2 {
+@keyframes driftBand2 {
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(-14px); }
 }
 
-@keyframes driftPiece3 {
-  0%, 100% { transform: rotate(-4deg) translateX(0); }
-  50% { transform: rotate(-4deg) translateX(10px); }
-}
-
-@keyframes driftPiece4 {
+@keyframes driftBand3 {
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(10px); }
 }
 
-@keyframes driftPiece5 {
-  0%, 100% { transform: rotate(3deg) translateX(0); }
-  50% { transform: rotate(3deg) translateX(-8px); }
+@keyframes driftBand4 {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-12px); }
 }
 
-@keyframes driftPiece6 {
-  0%, 100% { transform: rotate(-3deg) translateX(0); }
-  50% { transform: rotate(-3deg) translateX(10px); }
-}
-
-@keyframes driftPiece7 {
-  0%, 100% { transform: rotate(2deg) translateX(0); }
-  50% { transform: rotate(2deg) translateX(-8px); }
-}
-
-@keyframes driftPiece8 {
+@keyframes driftBand5 {
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(12px); }
 }
 
-@keyframes driftPiece9 {
-  0%, 100% { transform: rotate(-2deg) translateX(0); }
-  50% { transform: rotate(-2deg) translateX(8px); }
+@keyframes driftBand6 {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-10px); }
 }
 
 /* ambient glow blobs */
@@ -303,6 +235,23 @@ body {
   border-bottom: 1px solid rgba(255,255,255,.14);
   box-shadow: 0 6px 20px rgba(2, 6, 23, 0.10);
   padding: 1.25rem 0;
+  position: sticky;
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -22px;
+  height: 22px;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(226, 232, 240, 0.24) 0%,
+    rgba(226, 232, 240, 0.10) 35%,
+    rgba(4, 22, 44, 0.00) 100%
+  );
 }
 
 .nav-inner {
@@ -755,38 +704,16 @@ main > section + section {
     grid-column: span 12;
   }
 
-  .sql-piece-3,
-  .sql-piece-5,
-  .sql-piece-7,
-  .sql-piece-9 {
-    display: none;
+  .sql-band-1,
+  .sql-band-2,
+  .sql-band-3,
+  .sql-band-5,
+  .sql-band-6 {
+    font-size: 15px;
   }
 
-  .sql-piece-1 {
-    top: 10%;
-    width: 56vw;
-  }
-
-  .sql-piece-2 {
-    top: 13%;
-    width: 52vw;
-  }
-
-  .sql-piece-4 {
-    top: 56%;
-    width: 96vw;
-    left: 2%;
-    font-size: 17px;
-  }
-
-  .sql-piece-6 {
-    top: 82%;
-    width: 34vw;
-  }
-
-  .sql-piece-8 {
-    top: 92%;
-    width: 54vw;
+  .sql-band-4 {
+    font-size: 16px;
   }
 }
 
@@ -807,19 +734,8 @@ main > section + section {
     margin-top: 28px;
   }
 
-  .sql-piece {
-    font-size: 15px;
-  }
-
-  .sql-piece-1,
-  .sql-piece-2,
-  .sql-piece-4 {
-    opacity: 0.62;
-  }
-
-  .sql-piece-6,
-  .sql-piece-8 {
-    opacity: 0.34;
+  .sql-band {
+    opacity: 0.42;
   }
 }
 
@@ -832,19 +748,16 @@ main > section + section {
     padding: 28px;
   }
 
-  .sql-piece-1,
-  .sql-piece-2,
-  .sql-piece-6,
-  .sql-piece-8,
-  .sql-piece-9 {
+  .sql-band-1,
+  .sql-band-3,
+  .sql-band-5 {
     display: none;
   }
 
-  .sql-piece-4 {
-    top: 58%;
-    width: 110vw;
-    left: -5%;
+  .sql-band-2,
+  .sql-band-4,
+  .sql-band-6 {
     font-size: 13px;
-    opacity: 0.42;
+    opacity: 0.30;
   }
 }
