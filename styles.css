@@ -45,7 +45,7 @@ a { color: inherit; }
   --muted: rgba(11, 18, 32, 0.72);
   --muted-2: rgba(11, 18, 32, 0.56);
 
-  /* Accent (subtle, professional) */
+  /* Accent */
   --accent: #0f172a;
   --accent-2: #1d4ed8;
 
@@ -82,9 +82,12 @@ body {
   background: var(--glass-bg);
   border: 1px solid var(--glass-stroke);
 }
-.skip-link:focus { left: 12px; }
 
-/* Animated SQL background */
+.skip-link:focus {
+  left: 12px;
+}
+
+/* Straight terminal-style SQL background */
 .bg-sql-layer {
   position: fixed;
   inset: 0;
@@ -95,62 +98,53 @@ body {
 
 .sql-track {
   position: absolute;
-  min-width: 1600px;
-  width: 160vw;
-  color: rgba(15, 23, 42, 0.14);
+  left: -10vw;
+  width: 120vw;
+  color: rgba(15, 23, 42, 0.10);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 32px;
-  line-height: 2.1;
+  font-size: 30px;
+  line-height: 1.9;
   white-space: pre;
-  filter: blur(0.5px);
+  filter: blur(0.35px);
   user-select: none;
 }
 
 .sql-track pre {
   margin: 0;
-  white-space: pre-wrap;
+  white-space: pre;
 }
 
 .sql-track-1 {
-  top: 4%;
-  left: -18%;
-  transform: rotate(-7deg);
-  animation: driftSql1 30s linear infinite;
+  top: 14%;
+  animation: driftSql1 36s ease-in-out infinite;
 }
 
 .sql-track-2 {
-  top: 36%;
-  left: -24%;
-  transform: rotate(-5deg);
-  animation: driftSql2 38s linear infinite;
+  top: 44%;
+  animation: driftSql2 42s ease-in-out infinite;
 }
 
 .sql-track-3 {
-  top: 68%;
-  left: -16%;
-  transform: rotate(-6deg);
-  animation: driftSql3 34s linear infinite;
+  top: 74%;
+  animation: driftSql3 40s ease-in-out infinite;
 }
 
 @keyframes driftSql1 {
-  0%   { transform: translateX(0) rotate(-7deg); }
-  50%  { transform: translateX(120px) rotate(-7deg); }
-  100% { transform: translateX(0) rotate(-7deg); }
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(90px); }
 }
 
 @keyframes driftSql2 {
-  0%   { transform: translateX(0) rotate(-5deg); }
-  50%  { transform: translateX(-140px) rotate(-5deg); }
-  100% { transform: translateX(0) rotate(-5deg); }
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-110px); }
 }
 
 @keyframes driftSql3 {
-  0%   { transform: translateX(0) rotate(-6deg); }
-  50%  { transform: translateX(100px) rotate(-6deg); }
-  100% { transform: translateX(0) rotate(-6deg); }
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(75px); }
 }
 
-/* Decorative blobs (CSS only, very subtle) */
+/* Decorative blobs */
 .bg-blob {
   position: fixed;
   width: 560px;
@@ -598,7 +592,7 @@ input:focus, textarea:focus {
 .mt16 { margin-top: 16px !important; }
 .mt20 { margin-top: 20px !important; }
 
-/* Prose spacing for long text blocks */
+/* Prose */
 .prose {
   max-width: none;
 }
@@ -631,19 +625,53 @@ main > section + section {
 }
 
 @media (max-width: 920px) {
-  .hero { padding: 44px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 26px; }
-  .card { grid-column: span 12; }
+  .hero {
+    padding: 44px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .card {
+    grid-column: span 12;
+  }
 }
 
 @media (max-width: 820px) {
-  main { margin: 32px auto 72px; }
-  .hero { padding: 44px; }
-  .section { padding: 40px; }
-  main > section + section { margin-top: 28px; }
+  main {
+    margin: 32px auto 72px;
+  }
+
+  .hero {
+    padding: 44px;
+  }
+
+  .section {
+    padding: 40px;
+  }
+
+  main > section + section {
+    margin-top: 28px;
+  }
+
+  .sql-track {
+    font-size: 22px;
+    opacity: 0.08;
+  }
 }
 
 @media (max-width: 520px) {
-  .hero { padding: 32px; }
-  .section { padding: 28px; }
+  .hero {
+    padding: 32px;
+  }
+
+  .section {
+    padding: 28px;
+  }
+
+  .sql-track {
+    font-size: 16px;
+  }
 }
