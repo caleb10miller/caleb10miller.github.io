@@ -162,17 +162,9 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 14px;
-  background: linear-gradient(135deg, rgba(15,23,42,.92), rgba(37,99,235,.82));
-  box-shadow: 0 16px 34px rgba(15,23,42,.14);
-  position: relative;
   overflow: hidden;
-}
-.mark::after {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.70), transparent 58%);
-  transform: rotate(18deg);
+  background: url("./photos/headshot.jpg") center/cover no-repeat;
+  box-shadow: 0 16px 34px rgba(15,23,42,.14);
 }
 
 .brand .name { font-weight: 750; letter-spacing: -0.02em; }
